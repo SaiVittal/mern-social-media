@@ -36,6 +36,7 @@ const MyPostWidget = ({ picturePath }) => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const medium = palette.neutral.medium;
   const mediumMain = palette.neutral.mediumMain;
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const handlePost = async () => {
     const formData = new FormData();
@@ -45,7 +46,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch(`${apiUrl}/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,

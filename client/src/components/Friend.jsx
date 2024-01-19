@@ -23,7 +23,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   //console.log(friends);
   const isFriend = Array.from(friends).find(
     (friend) => friend._id === friendId
@@ -32,7 +32,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${_id}/${friendId}`,
+      `${apiUrl}/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

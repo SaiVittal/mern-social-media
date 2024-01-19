@@ -32,13 +32,14 @@ const PostWidget = ({
   //   const isLiked = Boolean(likes[loggedInUserId]);
   //   const likeCount = Object.keys(likes).length;
   //const likeCount = Object.keys(likes).length;
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const { palette } = useTheme();
   const primary = palette.primary.main;
   const main = palette.neutral.main;
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`${apiUrl}/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -67,7 +68,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           sx={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`${apiUrl}/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
